@@ -18,14 +18,9 @@ class MenuItemsView(generics.ListCreateAPIView):
 
 
 class MenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
-    queryset = Booking.objects.all()
-    serializer_class = BookingSerializer
+    queryset = MenuItem.objects.all()
+    serializer_class = MenuItemSerializer
     permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        items = MenuItem.objects.all()
-        serializer = MenuItemSerializer(items, many=True)
-        return Response(serializer.data)
 
 
 class BookingViewSet(ModelViewSet):
